@@ -1,5 +1,7 @@
 # 2048Game
 //########
-# This is my collage weekend work.
-# From LiLinglong, GaoYi ,ChenWenqing
-# We use EasyX Library for C++.
+# This is our collage weekend work.(Qinghai university)
+# Group by LiLinglong, GaoYi ,ChenWenqing
+# This program use EasyX Library for C++.
+//  C++版本2048 
+//  
