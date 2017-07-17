@@ -12,6 +12,7 @@ extern int x;
 extern int y;
 
 void printPic(){
+
 	BeginBatchDraw();
 	setrop2(R2_XORPEN);
 

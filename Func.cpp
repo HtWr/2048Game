@@ -14,28 +14,34 @@ extern int y;
 
 
 void xy(int n){
-    if(n==1){ 
-		x=-1; y=0;
+    if(n == 1){ 
+		x = -1;
+		y = 0;
 	}
     if(n==2){
-		x=1; y=0;
+		x = 1;
+		y = 0;
 	}
     if(n==3){
-		x =0; y=-1;
+		x = 0; 
+		y = -1;
 	}
-    if(n==4){ 
-		x=0; y=1;
+    if(n == 4){ 
+		x = 0;
+		y = 1;
 	}
 }
 
-void f(){
+/*void f(){			//print函数 用于cmd程序测试时生成数组视图函数 （已废弃）
+}
+
     int i, j;
     for(i=0; i<4; i++){
 		for(j=0; j<4; j++)
 			printf("%4d ", a[i][j]); 
             printf("\n");
 	}
-}
+}*/
 
 int f1(int i){
     if(i>=0&&i<4) 
@@ -47,13 +53,16 @@ int f1(int i){
 void init(){   //初始化函数
 	
     int i,j, i1, i2;
+	//先将数组初始化为0（即为每个空格都为空）
     for(i=0; i<4; i++)
         for(j=0; j<4; j++)
             a[i][j]=0;
+
+	//生成初始的两个数字2
     do{
 		i1 = rand()%16;
         i2 = rand()%16;
-    } while(i1==i2);
+    } while(i1 == i2);//i1和i2不能为相同位置
 
     a[i1/4][i1%4] = 2;
     a[i2/4][i2%4] = 2;
@@ -88,14 +97,12 @@ int move(int z){
             if(f1(i+x))
             if(f1(j+y)&&a[i+x][j+y]==0){ 
 				a[i+x][j+y]=a[i][j]; a[i][j]=0; k=2; n=1;
-			}
- 
-  
+			} 
     } 
     return n;
 }
 
-int plus(int z){
+int plus(int z){		//加和函数 当数组行或列
     int i, j, n=0;
     if(z==1)
         for(i=0; i<4; i++)
@@ -147,10 +154,13 @@ void xx(int i){
     plus(i); 
     move(i); 
     nn();
-    f();     
+    //f();  //(已废弃)    
 }
 
-int check(){
+
+
+int check(){		//检查函数 循环检查数组内数字
+
     int i, j, l, b[4][4], n=0;
     for(i=0; i<4; i++)
             for(j=0; j<4; j++)
@@ -176,7 +186,8 @@ int check(){
     return n;
 }
 
-bool is_win(){
+bool is_win(){			//	判断游戏是否胜利
+						// 判断条件：二维数组中任意一个位置出现2048
 	for(int i = 0;i<4;i++){
 	
 		for(int j = 0; j<4;j++){
@@ -185,6 +196,7 @@ bool is_win(){
 
 				return true;
 			}
+			else return false;
 		}
-	}
+	}	
 }

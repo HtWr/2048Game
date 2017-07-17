@@ -3,7 +3,7 @@
 
 static int p;
 void xy(int n);
-void f();
+//void f();
 int f1(int i);
 void init();
 void nn();
