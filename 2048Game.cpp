@@ -1,13 +1,13 @@
 // 2048Game.cpp : 定义控制台应用程序的入口点。
 //
 
-#include"stdafx.h"
-#include"graphics.h"
+#include "stdafx.h"
+#include "graphics.h"
 #include <stdio.h>
 #include <tchar.h>
-#include<conio.h>
-#include<time.h>
-#include<stdlib.h>
+#include <conio.h>
+#include <time.h>
+#include <stdlib.h>
 #include "Draw.h"
 #include "Func.h"
 
@@ -17,10 +17,14 @@ int x;
 int y;
 
 
-
 int _tmain(int argc, _TCHAR* argv[]){
 
-	initgraph(400,400);
+	initgraph(400,470);
+
+	IMAGE TOP;
+	loadimage(&TOP, "top.jpg");
+	putimage(0, 0, &TOP);
+
 	int i;
     int j;
     int k;
@@ -36,24 +40,28 @@ int _tmain(int argc, _TCHAR* argv[]){
 			k = _getch();
 			if(k==224){
 				j=_getch();
-				system("cls");
-				if(j==72) xx(1);
-				if(j==80) xx(2);
-				if(j==75) xx(3);
-				if(j==77) xx(4); 
+				
+				show_score();
+				system("CLS");
+
+				//用一个接口调用移动函数以及加和函数
+				if(j==72) API(1);
+				if(j==80) API(2);
+				if(j==75) API(3);
+				if(j==77) API(4); 
 				
 				if(check()==0){
 					//printf("玩死了!!!\n"); 
 					IMAGE LOSE;
 					loadimage(&LOSE, "lose.bmp");
-					putimage(0, 0, &LOSE); 
+					putimage(0, 70, &LOSE); 
 					break;
 				}
 				if(is_win() == true){
 					
 					IMAGE WIN;
 					loadimage(&WIN, "win.jpg");
-					putimage(0, 0, &WIN); 
+					putimage(0, 70, &WIN); 
 					break;
 				}
 			}
